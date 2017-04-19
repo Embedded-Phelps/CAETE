@@ -55,7 +55,7 @@ void LED_Off(uint8_t ledNo)
  * Returned variables: none defined
  *
  */
-void led_On(uint8_t ledNo)
+void LED_On(uint8_t ledNo)
 {
   if ((ledNo >= 0) && (ledNo < BOARD_NO_OF_LEDS))
   {

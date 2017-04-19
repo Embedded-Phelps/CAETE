@@ -14,5 +14,10 @@
  ************************** SYSTEM CONFIGURATION *******************************
  ******************************************************************************/
 
+#define LOWEST_ENERGY_MODE_ALLOWED		(EM2)
+
+/* LETIMER USER CONFIGURATION */
+#define OPERATING_PERIOD		(1.0)
+#define OPERATING_SUBDURATION	(0.01)
 
 #endif /* INC_LG_SYSTEMCONFIG_H_ */

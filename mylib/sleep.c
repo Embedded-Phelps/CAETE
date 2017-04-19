@@ -11,7 +11,7 @@
  ****************************  Global Variables  *******************************
  ******************************************************************************/
 
-uint8_t sleep_block_counter[3]; // Counts the lowest possible active states
+uint8_t sleep_block_counter[3] = {0}; // Counts the lowest possible active states
 
 
 /*******************************************************************************
@@ -29,9 +29,9 @@ uint8_t sleep_block_counter[3]; // Counts the lowest possible active states
  */
 void blockSleepMode(int32_t lowest_Energymode)
 {
-	INT_Disable();
+	CORE_CriticalDisableIrq();
 	sleep_block_counter[lowest_Energymode]++;
-	INT_Enable();
+	CORE_CriticalEnableIrq();
 }
 
 /**********************************************************************/
@@ -45,12 +45,12 @@ void blockSleepMode(int32_t lowest_Energymode)
  */
 void unblockSleepMode(int32_t lowest_Energymode)
 {
-	INT_Disable();
+	CORE_CriticalDisableIrq();
 	if(sleep_block_counter[lowest_Energymode]>0)
 	{
 		sleep_block_counter[lowest_Energymode]--;
 	}
-	INT_Enable();
+	CORE_CriticalEnableIrq();
 }
 
 /**********************************************************************/
