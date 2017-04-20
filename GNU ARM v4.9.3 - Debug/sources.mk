@@ -16,6 +16,7 @@ C_DEPS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 CMSIS/EFM32LG \
+emdrv/src \
 emlib \
 mylib \
 src \

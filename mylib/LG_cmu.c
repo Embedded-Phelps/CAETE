@@ -17,5 +17,6 @@ void cmu_Setup(void)
     CMU_ClockEnable(cmuClock_CORELE, true);
     CMU_ClockEnable(cmuClock_LETIMER0, true);
     CMU_ClockEnable(cmuClock_GPIO, true);
+    CMU_ClockEnable(cmuClock_I2C1, true);
 
 }

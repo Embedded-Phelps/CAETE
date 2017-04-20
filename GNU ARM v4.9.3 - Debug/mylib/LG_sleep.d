@@ -1,4 +1,4 @@
-src/LG_task.o: ../src/LG_task.c \
+mylib/LG_sleep.o: ../mylib/LG_sleep.c \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_system.h \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_sleep.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/Device/SiliconLabs/EFM32LG/Include/em_device.h \

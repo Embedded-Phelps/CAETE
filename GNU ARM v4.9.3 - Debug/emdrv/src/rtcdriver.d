@@ -1,6 +1,4 @@
-src/LG_task.o: ../src/LG_task.c \
- /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_system.h \
- /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_sleep.h \
+emdrv/src/rtcdriver.o: ../emdrv/src/rtcdriver.c \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/Device/SiliconLabs/EFM32LG/Include/em_device.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/Device/SiliconLabs/EFM32LG/Include/efm32lg990f256.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/CMSIS/Include/core_cm3.h \
@@ -55,40 +53,16 @@ src/LG_task.o: ../src/LG_task.c \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/Device/SiliconLabs/EFM32LG/Include/efm32lg_uart.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/Device/SiliconLabs/EFM32LG/Include/efm32lg_af_ports.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/Device/SiliconLabs/EFM32LG/Include/efm32lg_af_pins.h \
- /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_chip.h \
- /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_system.h \
- /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_gpio.h \
- /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_bus.h \
+ /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_cmu.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_assert.h \
+ /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_bus.h \
+ /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_common.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_core.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_common.h \
- /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_letimer.h \
- /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_emu.h \
- /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_cmu.h \
- /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_timer.h \
- /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_acmp.h \
- /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_adc.h \
- /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_dma.h \
- /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_i2c.h \
- /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_leuart.h \
- /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_lesense.h \
+ /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_rtc.h \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/emdrv/inc/rtcdriver.h \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/emdrv/inc/ecode.h \
- /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/emdrv/inc/rtcdrv_config.h \
- /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//hardware/kit/common/drivers/dmactrl.h \
- /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_systemConfig.h \
- /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_system.h \
- /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_task.h \
- /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_cmu.h \
- /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_letimer.h \
- /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_i2c.h \
- /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_sleep.h \
- /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/board_led.h \
- /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/bme280.h
-
-/Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_system.h:
-
-/Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_sleep.h:
+ /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/emdrv/inc/rtcdrv_config.h
 
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/Device/SiliconLabs/EFM32LG/Include/em_device.h:
 
@@ -198,62 +172,22 @@ src/LG_task.o: ../src/LG_task.c \
 
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/Device/SiliconLabs/EFM32LG/Include/efm32lg_af_pins.h:
 
-/Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_chip.h:
+/Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_cmu.h:
 
-/Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_system.h:
-
-/Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_gpio.h:
+/Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_assert.h:
 
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_bus.h:
 
-/Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_assert.h:
+/Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_common.h:
 
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_core.h:
 
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_common.h:
 
-/Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_letimer.h:
-
-/Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_emu.h:
-
-/Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_cmu.h:
-
-/Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_timer.h:
-
-/Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_acmp.h:
-
-/Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_adc.h:
-
-/Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_dma.h:
-
-/Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_i2c.h:
-
-/Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_leuart.h:
-
-/Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_lesense.h:
+/Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_rtc.h:
 
 /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/emdrv/inc/rtcdriver.h:
 
 /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/emdrv/inc/ecode.h:
 
 /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/emdrv/inc/rtcdrv_config.h:
-
-/Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//hardware/kit/common/drivers/dmactrl.h:
-
-/Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_systemConfig.h:
-
-/Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_system.h:
-
-/Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_task.h:
-
-/Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_cmu.h:
-
-/Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_letimer.h:
-
-/Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_i2c.h:
-
-/Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_sleep.h:
-
-/Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/board_led.h:
-
-/Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/bme280.h:

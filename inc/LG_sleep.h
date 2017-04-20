@@ -6,8 +6,10 @@
 // Date: 01/31/2017
 //===============================================================================
 
-#ifndef INC_SLEEP_H_
-#define INC_SLEEP_H_
+#ifndef INC_LG_SLEEP_H_
+#define INC_LG_SLEEP_H_
+
+#include <stdint.h>
 
 /**********************************************************************/
 /* Name: blockSleepMode()
@@ -42,4 +44,4 @@ void unblockSleepMode(int32_t lowest_Energymode);
  */
 void sleep(void);
 
-#endif /* INC_SLEEP_H_ */
+#endif /* INC_LG_SLEEP_H_ */

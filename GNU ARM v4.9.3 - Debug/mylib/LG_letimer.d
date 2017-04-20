@@ -1,5 +1,6 @@
 mylib/LG_letimer.o: ../mylib/LG_letimer.c \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_system.h \
+ /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_sleep.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/Device/SiliconLabs/EFM32LG/Include/em_device.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/Device/SiliconLabs/EFM32LG/Include/efm32lg990f256.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/CMSIS/Include/core_cm3.h \
@@ -71,16 +72,23 @@ mylib/LG_letimer.o: ../mylib/LG_letimer.c \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_i2c.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_leuart.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_lesense.h \
+ /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/emdrv/inc/rtcdriver.h \
+ /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/emdrv/inc/ecode.h \
+ /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/emdrv/inc/rtcdrv_config.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//hardware/kit/common/drivers/dmactrl.h \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_systemConfig.h \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_system.h \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_task.h \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_cmu.h \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_letimer.h \
+ /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_i2c.h \
+ /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_sleep.h \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/board_led.h \
- /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/sleep.h
+ /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/bme280.h
 
 /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_system.h:
+
+/Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_sleep.h:
 
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/Device/SiliconLabs/EFM32LG/Include/em_device.h:
 
@@ -224,6 +232,12 @@ mylib/LG_letimer.o: ../mylib/LG_letimer.c \
 
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/emlib/inc/em_lesense.h:
 
+/Users/shuting/Documents/ESE/ECEN_5023/Final_Project/emdrv/inc/rtcdriver.h:
+
+/Users/shuting/Documents/ESE/ECEN_5023/Final_Project/emdrv/inc/ecode.h:
+
+/Users/shuting/Documents/ESE/ECEN_5023/Final_Project/emdrv/inc/rtcdrv_config.h:
+
 /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//hardware/kit/common/drivers/dmactrl.h:
 
 /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_systemConfig.h:
@@ -236,6 +250,10 @@ mylib/LG_letimer.o: ../mylib/LG_letimer.c \
 
 /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_letimer.h:
 
+/Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_i2c.h:
+
+/Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_sleep.h:
+
 /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/board_led.h:
 
-/Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/sleep.h:
+/Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/bme280.h:
