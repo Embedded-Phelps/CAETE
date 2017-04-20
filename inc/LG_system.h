@@ -49,7 +49,8 @@
 #include "LG_cmu.h"
 #include "LG_letimer.h"
 #include "LG_i2c.h"
-
+#include "LG_lesense.h"
+#include "LG_acmp.h"
 #include "LG_sleep.h"
 
 #include "board_led.h"
@@ -82,6 +83,18 @@
 #define AMBIANT_LIGHT_EXCITE_PIN				(6U)
 #define AMBIANT_LIGHT_SENSE_PORT				(gpioPortC)
 #define AMBIANT_LIGHT_SENSE_PIN					(6U)
+
+/* On-Board Capacitive sensor */
+#define CAPLESENSE_NUMOF_SLIDERS       (4U)                          /* Number of sliders */
+#define CAPLESENSE_SLIDER_PORT0        (gpioPortC)                  /* Slider Port. GPIO Port C */
+#define CAPLESENSE_SLIDER0_PORT        (CAPLESENSE_SLIDER_PORT0)    /* Slider 0 Port. GPIO Port C */
+#define CAPLESENSE_SLIDER0_PIN         (8U)                        /* Slider 0 Pin 8 */
+#define CAPLESENSE_SLIDER1_PORT        (CAPLESENSE_SLIDER_PORT0)    /* Slider 1 Port. GPIO Port C */
+#define CAPLESENSE_SLIDER1_PIN         (9U)                        /* Slider 1 Pin 9 */
+#define CAPLESENSE_SLIDER2_PORT        (CAPLESENSE_SLIDER_PORT0)    /* Slider 2 Port. GPIO Port C */
+#define CAPLESENSE_SLIDER2_PIN         (10U)                       /* Slider 2 Pin 10 */
+#define CAPLESENSE_SLIDER3_PORT        (CAPLESENSE_SLIDER_PORT0)    /* Slider 3 Port. GPIO Port C */
+#define CAPLESENSE_SLIDER3_PIN         (11U)                       /* Slider 3 Pin 11 */
 
 /* LEUART TX/RX pin location based on the user define */
 #if (LEUART0_ROUTE_LOC == LEUART_ROUTE_LOCATION_LOC0)
@@ -134,6 +147,7 @@
 #define I2C1_SDA_PIN						(4U)
 #define I2C1_SCL_PORT						(gpioPortC)
 #define I2C1_SCL_PIN						(5U)
+
 
 /*******************************************************************************
  ************************  EXTERNAL GLOBAL VARIABLE  ***************************

@@ -18,5 +18,13 @@ void cmu_Setup(void)
     CMU_ClockEnable(cmuClock_LETIMER0, true);
     CMU_ClockEnable(cmuClock_GPIO, true);
     CMU_ClockEnable(cmuClock_I2C1, true);
+    /* Enable clock for ACMP0. */
+    CMU_ClockEnable(cmuClock_ACMP0, true);
+    /* Enable clock for ACMP1. */
+    CMU_ClockEnable(cmuClock_ACMP1, true);
+    /* Enable clock for LESENSE. */
+    CMU_ClockEnable(cmuClock_LESENSE, true);
+    /* Enable clock divider for LESENSE. */
+    CMU_ClockDivSet(cmuClock_LESENSE, cmuClkDiv_1);
 
 }

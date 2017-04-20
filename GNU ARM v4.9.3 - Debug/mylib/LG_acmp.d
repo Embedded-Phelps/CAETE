@@ -1,4 +1,4 @@
-mylib/LG_cmu.o: ../mylib/LG_cmu.c \
+mylib/LG_acmp.o: ../mylib/LG_acmp.c \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_system.h \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_sleep.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/Device/SiliconLabs/EFM32LG/Include/em_device.h \
