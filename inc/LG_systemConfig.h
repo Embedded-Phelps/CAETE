@@ -24,4 +24,12 @@
 #define DARKNESS_THRESHOLD	(0x38)
 #define LIGHTNESS_THRESHOLD	(0x80)
 
+/* LEUART CONFIGURATION */
+#define LEUART0_BAUDRATE					(9600)
+#define LEUART0_DATABITS					(leuartDatabits8)
+#define LEUART0_PARITY						(leuartNoParity)
+#define LEUART0_STOPBIT						(leuartStopbits1)
+#define LEUART0_ENABLE						(leuartEnable)
+#define LEUART0_ROUTE_LOC					(LEUART_ROUTE_LOCATION_LOC0)
+
 #endif /* INC_LG_SYSTEMCONFIG_H_ */

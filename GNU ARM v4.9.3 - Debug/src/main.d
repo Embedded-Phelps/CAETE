@@ -84,9 +84,11 @@ src/main.o: ../src/main.c \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_i2c.h \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_lesense.h \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_acmp.h \
+ /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_leuart.h \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_sleep.h \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/board_led.h \
- /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/bme280.h
+ /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/bme280.h \
+ /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/serial_BLE.h
 
 /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_system.h:
 
@@ -258,8 +260,12 @@ src/main.o: ../src/main.c \
 
 /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_acmp.h:
 
+/Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_leuart.h:
+
 /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_sleep.h:
 
 /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/board_led.h:
 
 /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/bme280.h:
+
+/Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/serial_BLE.h:

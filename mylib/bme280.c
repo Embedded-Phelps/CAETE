@@ -323,4 +323,6 @@ void bme280_RTCCallback(RTCDRV_TimerID_t id)
 	cal_upressure = bme280_compensate_P_double(upressure);
 	BME280_PowerOff();
 	//send out value.
+	serial_SendPacket(TEMPERATURE, &cal_utemperature);
+	serial_SendPacket(BAROMETRIC_PRESSURE, &cal_upressure);
 }

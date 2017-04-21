@@ -14,6 +14,7 @@ void cmu_Setup(void)
 #else
     CMU_ClockSelectSet(cmuClock_LFA, cmuSelect_ULFRCO);
 #endif
+    CMU_ClockSelectSet(cmuClock_LFB, cmuSelect_LFXO);
     CMU_ClockEnable(cmuClock_CORELE, true);
     CMU_ClockEnable(cmuClock_LETIMER0, true);
     CMU_ClockEnable(cmuClock_GPIO, true);
@@ -26,5 +27,7 @@ void cmu_Setup(void)
     CMU_ClockEnable(cmuClock_LESENSE, true);
     /* Enable clock divider for LESENSE. */
     CMU_ClockDivSet(cmuClock_LESENSE, cmuClkDiv_1);
+    CMU_ClockEnable(cmuClock_DMA, true);
+    CMU_ClockEnable(cmuClock_LEUART0, true);
 
 }

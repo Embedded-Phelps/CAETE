@@ -29,6 +29,7 @@ void LG_systemInit(void)
 	acmp_Setup();
 	lesense_Setup(true);
 	lesense_SetupCallbacks(&capSenseScanCompleteCB, &capSenseChTriggerCB);
+	leuart_Setup();
 	LED_Init();
     /* Limit the lowest energy mode that the device can enter */
     blockSleepMode(LOWEST_ENERGY_MODE_ALLOWED);

@@ -51,10 +51,14 @@
 #include "LG_i2c.h"
 #include "LG_lesense.h"
 #include "LG_acmp.h"
+
+#include "LG_leuart.h"
+
 #include "LG_sleep.h"
 
 #include "board_led.h"
 #include "bme280.h"
+#include "serial_BLE.h"
 
 /*******************************************************************************
  *****************************  SYSTEM MACRO  **********************************
@@ -67,6 +71,7 @@
 #define EM3		(3U)
 
 #define I2C_EM	(EM1)	// Lowest energy mode allowed when I2C is in operation
+#define DMA_EM	(EM2)	// Lowest energy mode allowed when DMA is in operation
 
 /* System Clocks */
 #define ULFRCO_DEFAULT_FREQ					(1000)			// The default frequency of the ULFRCO clock
