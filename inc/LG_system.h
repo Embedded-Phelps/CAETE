@@ -58,6 +58,7 @@
 
 #include "board_led.h"
 #include "bme280.h"
+#include "pir.h"
 #include "serial_BLE.h"
 
 /*******************************************************************************
@@ -100,6 +101,14 @@
 #define CAPLESENSE_SLIDER2_PIN         (10U)                       /* Slider 2 Pin 10 */
 #define CAPLESENSE_SLIDER3_PORT        (CAPLESENSE_SLIDER_PORT0)    /* Slider 3 Port. GPIO Port C */
 #define CAPLESENSE_SLIDER3_PIN         (11U)                       /* Slider 3 Pin 11 */
+
+/* PIR sensor */
+#define PIR_INT_PORT					(gpioPortD)
+#define PIR_INT_PIN						(1U)
+#define PIR_INT_NO						(1)
+#define PIR_INT_RISINGEDGE				(true)
+#define PIR_INT_FALLINGEDGE				(false)
+#define PIR_INT_ENABLE					(true)
 
 /* LEUART TX/RX pin location based on the user define */
 #if (LEUART0_ROUTE_LOC == LEUART_ROUTE_LOCATION_LOC0)

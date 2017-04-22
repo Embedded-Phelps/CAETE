@@ -1,5 +1,5 @@
-mylib/LG_leuart.o: ../mylib/LG_leuart.c \
- /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_System.h \
+mylib/pir.o: ../mylib/pir.c \
+ /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_system.h \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_sleep.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/Device/SiliconLabs/EFM32LG/Include/em_device.h \
  /Applications/Simplicity\ Studio.app/Contents/Eclipse/developer/sdks/exx32/v5.0.0.0//platform/Device/SiliconLabs/EFM32LG/Include/efm32lg990f256.h \
@@ -91,7 +91,7 @@ mylib/LG_leuart.o: ../mylib/LG_leuart.c \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/pir.h \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/serial_BLE.h
 
-/Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_System.h:
+/Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_system.h:
 
 /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_sleep.h:
 

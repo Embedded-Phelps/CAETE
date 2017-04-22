@@ -88,6 +88,7 @@ mylib/LG_lesense.o: ../mylib/LG_lesense.c \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_sleep.h \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/board_led.h \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/bme280.h \
+ /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/pir.h \
  /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/serial_BLE.h
 
 /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/LG_system.h:
@@ -267,5 +268,7 @@ mylib/LG_lesense.o: ../mylib/LG_lesense.c \
 /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/board_led.h:
 
 /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/bme280.h:
+
+/Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/pir.h:
 
 /Users/shuting/Documents/ESE/ECEN_5023/Final_Project/inc/serial_BLE.h:

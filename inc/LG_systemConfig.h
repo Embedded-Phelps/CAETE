@@ -32,4 +32,6 @@
 #define LEUART0_ENABLE						(leuartEnable)
 #define LEUART0_ROUTE_LOC					(LEUART_ROUTE_LOCATION_LOC0)
 
+/* PIR sensor configuration */
+#define PIR_TIMEOUT					(20000)
 #endif /* INC_LG_SYSTEMCONFIG_H_ */
