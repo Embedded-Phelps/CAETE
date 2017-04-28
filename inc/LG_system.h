@@ -80,6 +80,8 @@
 #define LETIMER2_LFXO_DEFAULT_MAX_PERIOD	(2)				// The default max timing period of LETIMER0 clocked by LFXO in seconds
 #define CMU_LFAPRESC0_LETIMER0_MAX_DIV		(32768)			// Max value of the LETIMER0 low frequency prescaler divisor
 
+#define DATA_UPLOAD_ENABLED		(1)
+#define DATA_UPLOAD_DISABLED	(0)
 /*******************************************************************************
  *****************************  BOARD SPECIFIC  ********************************
  ******************************************************************************/
@@ -166,6 +168,6 @@
 /*******************************************************************************
  ************************  EXTERNAL GLOBAL VARIABLE  ***************************
  ******************************************************************************/
-
+extern uint8_t data_upload_flag;
 #endif /* LG_SYSTEM_H_ */
 

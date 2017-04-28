@@ -9,6 +9,7 @@
 
 RTCDRV_TimerID_t rtc_ID;
 struct bme280_t bme280;
+uint8_t data_upload_flag = DATA_UPLOAD_DISABLED;
 
 void capSenseScanCompleteCB(void);
 void capSenseChTriggerCB(uint32_t channel_flag);
@@ -24,12 +25,12 @@ void LG_systemInit(void)
 	RTCDRV_AllocateTimer( &rtc_ID );
 
 	cmu_Setup();
-	//letimer_Setup();
-	//i2c_Setup();
-	//acmp_Setup();
+	letimer_Setup();
+	i2c_Setup();
+	acmp_Setup();
 
-	//lesense_Setup(true);
-	//lesense_SetupCallbacks(&capSenseScanCompleteCB, &capSenseChTriggerCB);
+	lesense_Setup(true);
+	lesense_SetupCallbacks(&capSenseScanCompleteCB, &capSenseChTriggerCB);
 	leuart_Setup();
 	//pir_Init();
 	LED_Init();
@@ -37,7 +38,7 @@ void LG_systemInit(void)
     blockSleepMode(LOWEST_ENERGY_MODE_ALLOWED);
 
     /* Start the LETIMER0 */
-    //LETIMER_Enable(LETIMER0, true);
+    LETIMER_Enable(LETIMER0, true);
 }
 
 void LG_processLightSensingEvt(void)
@@ -70,7 +71,10 @@ void LG_processLightSensingEvt(void)
 		LESENSE->CH[AMBIENT_LIGHT_CHANNEL].EVAL |= LESENSE_CH_EVAL_COMP_GE;
 		LESENSE_ScanStart();
 	}
-
+	if(data_upload_flag == DATA_UPLOAD_ENABLED)
+	{
+		serial_SendPacket(AMBIENT_LIGHT, &env_state); //???0->1
+	}
 }
 
 void LG_processSliderSensingEvt(void)

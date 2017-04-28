@@ -33,7 +33,10 @@ void GPIO_ODD_IRQHandler(void)
 	{
 		old_state = MOTION_DETECTED;
 		//Send Notification
-		serial_SendPacket(MOTION, &old_state);
+		if(data_upload_flag == DATA_UPLOAD_ENABLED)
+		{
+			serial_SendPacket(MOTION, &old_state);
+		}
 	}
 	RTCDRV_StartTimer(rtc_PIR, rtcdrvTimerTypeOneshot, PIR_TIMEOUT, pir_RTCCallback, NULL);
 	GPIO_IntClear(1 << PIR_INT_NO);

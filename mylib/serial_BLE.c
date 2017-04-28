@@ -105,6 +105,6 @@ void serial_RXTransferDoneCB(uint8_t channel, bool primary, void *user)
 {
 	CORE_CriticalDisableIrq();
 	DMA->IFC = 1 << channel;
-	DMA_ActivateBasic(LEUART0_RX_DMA_CHANNEL, true, false, (void *)&leuart_rx_data, (void *)&(LEUART0->RXDATA), LEUART_RECEIVE_LENGTH-1);
+	DMA_ActivateBasic(LEUART0_RX_DMA_CHANNEL, true, false, (void *)&data_upload_flag, (void *)&(LEUART0->RXDATA), LEUART_RECEIVE_LENGTH-1);
 	CORE_CriticalEnableIrq();
 }

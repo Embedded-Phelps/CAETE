@@ -11,7 +11,6 @@
 DMA_CB_TypeDef dma_LEUART0_Tx_Callback;
 DMA_CB_TypeDef dma_LEUART0_Rx_Callback;
 
-uint8_t leuart_rx_data=0;
 void leuart_Setup(void);
 static void leuart_DMASetup(void);
 
@@ -43,7 +42,7 @@ void leuart_Setup(void)
 
 	LEUART0->CTRL |= LEUART_CTRL_RXDMAWU;
 	DMA_ENABLE();
-	DMA_ActivateBasic(LEUART0_RX_DMA_CHANNEL, true, false, (void *)&leuart_rx_data, (void *)&(LEUART0->RXDATA), LEUART_RECEIVE_LENGTH-1);
+	DMA_ActivateBasic(LEUART0_RX_DMA_CHANNEL, true, false, (void *)&data_upload_flag, (void *)&(LEUART0->RXDATA), LEUART_RECEIVE_LENGTH-1);
 }
 
 static void leuart_DMASetup(void)

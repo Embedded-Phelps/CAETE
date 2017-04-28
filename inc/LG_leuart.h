@@ -18,7 +18,6 @@
 
 #define LEUART_RECEIVE_LENGTH	(1)
 
-extern uint8_t leuart_rx_data;
 void leuart_Setup(void);
 
 #endif /* INC_LG_LEUART_H_ */
