@@ -24,7 +24,7 @@ void serial_BLE(void)
     str_length = strlen(ble_Transmit_Buff[tx_buffer_transmit_ptr]);
     str_ptr = ble_Transmit_Buff[tx_buffer_transmit_ptr];
     LEUART0->CTRL |= LEUART_CTRL_TXDMAWU;
-    DMA_ENABLE();
+    //DMA_ENABLE();
     blockSleepMode(DMA_EM);
     DMA_ActivateBasic(LEUART0_TX_DMA_CHANNEL, true, false, (void *)&(LEUART0->TXDATA), (void *)str_ptr, str_length-1);
 
@@ -91,7 +91,7 @@ void serial_TXTransferDoneCB(uint8_t channel, bool primary, void *user)
     DMA->IFC = 1 << channel;
     LEUART0->CTRL &= ~LEUART_CTRL_TXDMAWU;
     unblockSleepMode(DMA_EM);
-    DMA_DISABLE();
+    //DMA_DISABLE();
     strncpy(ble_Transmit_Buff[tx_buffer_transmit_ptr], "", DATA_MAX_LEN);
     data_transmitting_flag = false;
     if(tx_buffer_transmit_ptr != tx_buffer_write_ptr)
@@ -99,4 +99,12 @@ void serial_TXTransferDoneCB(uint8_t channel, bool primary, void *user)
     	serial_BLE();
     }
     CORE_CriticalEnableIrq();
+}
+
+void serial_RXTransferDoneCB(uint8_t channel, bool primary, void *user)
+{
+	CORE_CriticalDisableIrq();
+	DMA->IFC = 1 << channel;
+	DMA_ActivateBasic(LEUART0_RX_DMA_CHANNEL, true, false, (void *)&leuart_rx_data, (void *)&(LEUART0->RXDATA), LEUART_RECEIVE_LENGTH-1);
+	CORE_CriticalEnableIrq();
 }

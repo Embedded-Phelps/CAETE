@@ -26,11 +26,11 @@ void LG_systemInit(void)
 	cmu_Setup();
 	//letimer_Setup();
 	//i2c_Setup();
-	acmp_Setup();
+	//acmp_Setup();
 
-	lesense_Setup(true);
-	lesense_SetupCallbacks(&capSenseScanCompleteCB, &capSenseChTriggerCB);
-	//leuart_Setup();
+	//lesense_Setup(true);
+	//lesense_SetupCallbacks(&capSenseScanCompleteCB, &capSenseChTriggerCB);
+	leuart_Setup();
 	//pir_Init();
 	LED_Init();
     /* Limit the lowest energy mode that the device can enter */

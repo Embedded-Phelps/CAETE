@@ -33,5 +33,5 @@ typedef enum
 
 void serial_SendPacket(packet_type_e packet_id, void * value);
 extern void serial_TXTransferDoneCB(uint8_t channel, bool primary, void *user);
-
+extern void serial_RXTransferDoneCB(uint8_t channel, bool primary, void *user);
 #endif /* INC_SERIAL_BLE_H_ */

@@ -9,7 +9,9 @@
 #include "LG_System.h"
 
 DMA_CB_TypeDef dma_LEUART0_Tx_Callback;
+DMA_CB_TypeDef dma_LEUART0_Rx_Callback;
 
+uint8_t leuart_rx_data=0;
 void leuart_Setup(void);
 static void leuart_DMASetup(void);
 
@@ -38,6 +40,10 @@ void leuart_Setup(void)
 	/* Route LEUART0 TX pin to location 0 */
 	LEUART0->ROUTE = LEUART_ROUTE_TXPEN | LEUART_ROUTE_RXPEN | LEUART0_ROUTE_LOC;
 	leuart_DMASetup();
+
+	LEUART0->CTRL |= LEUART_CTRL_RXDMAWU;
+	DMA_ENABLE();
+	DMA_ActivateBasic(LEUART0_RX_DMA_CHANNEL, true, false, (void *)&leuart_rx_data, (void *)&(LEUART0->RXDATA), LEUART_RECEIVE_LENGTH-1);
 }
 
 static void leuart_DMASetup(void)
@@ -45,6 +51,10 @@ static void leuart_DMASetup(void)
     dma_LEUART0_Tx_Callback.cbFunc = serial_TXTransferDoneCB;
     dma_LEUART0_Tx_Callback.userPtr = NULL;
     dma_LEUART0_Tx_Callback.primary = 0;
+
+    dma_LEUART0_Rx_Callback.cbFunc = serial_RXTransferDoneCB;
+    dma_LEUART0_Rx_Callback.userPtr = NULL;
+    dma_LEUART0_Rx_Callback.primary = 0;
 
     DMA_Init_TypeDef dma_Config =
     {
@@ -69,15 +79,32 @@ static void leuart_DMASetup(void)
         .cb = &dma_LEUART0_Tx_Callback
     };
 
+    DMA_CfgDescr_TypeDef rx_Descr_Config =
+    {
+        .dstInc = dmaDataInc1,
+        .srcInc = dmaDataIncNone,
+        .size = dmaDataSize1,
+        .arbRate = dmaArbitrate1,
+        .hprot = 0
+    };
+
+    DMA_CfgChannel_TypeDef rx_Chn_Config =
+    {
+        .highPri = false,
+        .enableInt = true,
+        .select = DMAREQ_LEUART0_RXDATAV,
+        .cb = &dma_LEUART0_Rx_Callback
+    };
+
     /* Configure general DMA issues */
     DMA_Init(&dma_Config);
 
     /* Configure DMA channel used */
     DMA_CfgChannel(LEUART0_TX_DMA_CHANNEL, &tx_Chn_Config);
-
+    DMA_CfgChannel(LEUART0_RX_DMA_CHANNEL, &rx_Chn_Config);
     DMA_CfgDescr(LEUART0_TX_DMA_CHANNEL, true, &tx_Descr_Config);
-
-    DMA->IEN |= 2;
+    DMA_CfgDescr(LEUART0_RX_DMA_CHANNEL, true, &rx_Descr_Config);
+    DMA->IEN |= 6;
 
     NVIC_EnableIRQ(DMA_IRQn);
 }
