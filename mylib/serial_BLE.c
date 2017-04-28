@@ -43,11 +43,9 @@ void serial_PreparePacket(packet_type_e packet_id, void *value, uint8_t *packet,
 		break;
 	case BAROMETRIC_PRESSURE:
 		packet[0] = DATA_TYPE | BAROMETRIC_PRESSURE;
-		packet[1] = (uint8_t)(*(uint32_t*)value);
-		packet[2] = (uint8_t)((*(uint32_t *)value) >> 8);
-		packet[3] = (uint8_t)((*(uint32_t *)value) >> 16);
-		packet[4] = (uint8_t)((*(uint32_t *)value) >> 24);
-		*len = 5;
+		packet[1] = (uint8_t)(*(double*)value/1000);
+		packet[2] = (uint8_t)((*(double*)value/1000 - packet[1])*100);
+		len = 3;
 		break;
 	case MOTION:
 		packet[0] = STATE_TYPE | MOTION;
@@ -56,6 +54,11 @@ void serial_PreparePacket(packet_type_e packet_id, void *value, uint8_t *packet,
 		break;
 	case AMBIENT_LIGHT:
 		packet[0] = STATE_TYPE | AMBIENT_LIGHT;
+		packet[1] = *(uint8_t *)value;
+		*len = 2;
+		break;
+	case CAP_TOUCHED:
+		packet[0] = STATE_TYPE | CAP_TOUCHED;
 		packet[1] = *(uint8_t *)value;
 		*len = 2;
 		break;
@@ -88,12 +91,12 @@ void serial_TXTransferDoneCB(uint8_t channel, bool primary, void *user)
     DMA->IFC = 1 << channel;
     LEUART0->CTRL &= ~LEUART_CTRL_TXDMAWU;
     unblockSleepMode(DMA_EM);
+    DMA_DISABLE();
     strncpy(ble_Transmit_Buff[tx_buffer_transmit_ptr], "", DATA_MAX_LEN);
     data_transmitting_flag = false;
     if(tx_buffer_transmit_ptr != tx_buffer_write_ptr)
     {
     	serial_BLE();
     }
-    DMA_DISABLE();
     CORE_CriticalEnableIrq();
 }

@@ -58,7 +58,7 @@
 	0x01U,                     /* Excitation time is set to 1(+1) excitation clock cycles. */    \
 	0x01U,                     /* Sample delay is set to 1(+1) sample clock cycles. */ \
 	0x00U,                     /* Measure delay is set to 0 excitation clock cycles.*/    \
-	0x38U,                     /* ACMP threshold has been set to 0x38. */ \
+	DARKNESS_THRESHOLD,        			   /* ACMP threshold has been set to 0x38. */ \
 	lesenseSampleModeACMP,     /* ACMP will be used in comparison. */    \
 	lesenseSetIntNegEdge,      /* Interrupt is generated if the sensor triggers. */ \
 	0x0000U,                   /* Counter threshold has been set to 0x00. */    \

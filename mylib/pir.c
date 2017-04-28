@@ -7,7 +7,7 @@
 #include "LG_system.h"
 
 RTCDRV_TimerID_t rtc_PIR;
-static bool old_state = NO_MOTION_DETECTED;
+static uint8_t old_state = NO_MOTION_DETECTED;
 
 void pir_Init(void);
 void GPIO_ODD_IRQHandler(void);
@@ -33,7 +33,7 @@ void GPIO_ODD_IRQHandler(void)
 	{
 		old_state = MOTION_DETECTED;
 		//Send Notification
-		serial_Sendpacket(MOTION, 1);
+		serial_SendPacket(MOTION, &old_state);
 	}
 	RTCDRV_StartTimer(rtc_PIR, rtcdrvTimerTypeOneshot, PIR_TIMEOUT, pir_RTCCallback, NULL);
 	GPIO_IntClear(1 << PIR_INT_NO);
@@ -43,4 +43,5 @@ void GPIO_ODD_IRQHandler(void)
 void pir_RTCCallback(RTCDRV_TimerID_t id)
 {
 	old_state = NO_MOTION_DETECTED;
+	serial_SendPacket(MOTION, &old_state);
 }

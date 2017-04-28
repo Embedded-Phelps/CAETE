@@ -130,7 +130,7 @@ void lesense_Setup(bool sleep)
 	    LESENSE_ResultBufferClear();
 
 	    /* Set scan frequency (in Hz). */
-	    (void) LESENSE_ScanFreqSet(0U, 4U);
+	    (void) LESENSE_ScanFreqSet(0U, 5U);
 
 	    /* Set clock divisor for LF clock. */
 	    LESENSE_ClkDivSet(lesenseClkLF, lesenseClkDiv_1);

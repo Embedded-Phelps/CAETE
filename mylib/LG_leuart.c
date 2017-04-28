@@ -52,7 +52,7 @@ static void leuart_DMASetup(void)
         .controlBlock = dmaControlBlock,
     };
 
-    DMA_CfgDescr_TypeDef adc_Descr_Config =
+    DMA_CfgDescr_TypeDef tx_Descr_Config =
     {
         .dstInc = dmaDataIncNone,
         .srcInc = dmaDataInc1,
@@ -61,7 +61,7 @@ static void leuart_DMASetup(void)
         .hprot = 0
     };
 
-    DMA_CfgChannel_TypeDef adc_Chn_Config =
+    DMA_CfgChannel_TypeDef tx_Chn_Config =
     {
         .highPri = false,
         .enableInt = true,
@@ -73,9 +73,9 @@ static void leuart_DMASetup(void)
     DMA_Init(&dma_Config);
 
     /* Configure DMA channel used */
-    DMA_CfgChannel(LEUART0_TX_DMA_CHANNEL, &adc_Chn_Config);
+    DMA_CfgChannel(LEUART0_TX_DMA_CHANNEL, &tx_Chn_Config);
 
-    DMA_CfgDescr(LEUART0_TX_DMA_CHANNEL, true, &adc_Descr_Config);
+    DMA_CfgDescr(LEUART0_TX_DMA_CHANNEL, true, &tx_Descr_Config);
 
     DMA->IEN |= 2;
 

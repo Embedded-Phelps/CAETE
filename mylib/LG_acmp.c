@@ -24,6 +24,13 @@ void acmp_Setup(void)
     .enable = false                    /* Don't request enabling. */
   };
 
+  /* Configure the drive strength of the ports for the light sensor. */
+  GPIO_DriveModeSet(AMBIANT_LIGHT_EXCITE_PORT, gpioDriveModeStandard);
+  GPIO_DriveModeSet(AMBIANT_LIGHT_SENSE_PORT, gpioDriveModeStandard);
+
+  /* Initialize the 2 GPIO pins of the light sensor setup. */
+  GPIO_PinModeSet(AMBIANT_LIGHT_EXCITE_PORT, AMBIANT_LIGHT_EXCITE_PIN, gpioModePushPull, 0);
+  GPIO_PinModeSet(AMBIANT_LIGHT_SENSE_PORT, AMBIANT_LIGHT_SENSE_PIN, gpioModeDisabled, 0);
 
   /* Configure ACMP. */
   ACMP_Init(ACMP0, &initACMP0);
