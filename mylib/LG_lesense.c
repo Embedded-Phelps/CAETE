@@ -1,5 +1,6 @@
 /*
  * LG_lesense.c
+ * This driver refer to the example lesense project provided by SiLab Inc.
  *
  *  Created on: Apr 19, 2017
  *      Author: shuting
@@ -38,7 +39,10 @@ static void (*lesenseScanCb)(void);
 /** Callback function for LESENSE interrupts. */
 static void (*lesenseChCb)(uint32_t flag);
 
-void lesense_Setup(bool sleep)
+/**************************************************************************
+ *	@brief 	LESENSE modules setup function
+ **************************************************************************/
+void lesense_Setup(void)
 {
 	uint8_t i, j;
 	static bool init = true;
@@ -47,7 +51,7 @@ void lesense_Setup(bool sleep)
 	static uint16_t capsenseCalibrateVals[4];
 
 	/* LESENSE channel configuration constant table in sense mode. */
-	static const LESENSE_ChAll_TypeDef initChsSense = LESENSE_SCAN_CONF_WITH_CAPSENSE_SENSE;
+	//static const LESENSE_ChAll_TypeDef initChsSense = LESENSE_SCAN_CONF_WITH_CAPSENSE_SENSE;
 	/* LESENSE channel configuration constant table in sleep mode. */
 	static const LESENSE_ChAll_TypeDef initChsSleep = LESENSE_SCAN_CONF_WITH_CAPSENSE_SLEEP;
 
@@ -117,101 +121,70 @@ void lesense_Setup(bool sleep)
 		LESENSE_Init(&initLESENSE, true);
 	}
 
-	/* Different configuration for "sleep" and "sense" modes. */
-	if (sleep)
+	/* Stop LESENSE before configuration. */
+	LESENSE_ScanStop();
+
+	/* Wait until the currently active scan is finished. */
+	while (LESENSE_STATUS_SCANACTIVE & LESENSE_StatusGet()) ;
+
+	/* Clear result buffer. */
+	LESENSE_ResultBufferClear();
+
+	/* Set scan frequency (in Hz). */
+	(void) LESENSE_ScanFreqSet(0U, 5U);
+
+	/* Set clock divisor for LF clock. */
+	LESENSE_ClkDivSet(lesenseClkLF, lesenseClkDiv_1);
+
+	/* Configure scan channels. */
+	LESENSE_ChannelAllConfig(&initChsSleep);
+
+	/* Configure alternate excitation channels. */
+	LESENSE_AltExConfig(&initAltEx);
+
+	/* Restore calibration values. */
+	LESENSE_ChannelThresSet(CAPLESENSE_SLIDER0_PIN, CAPLESENSE_ACMP_VDD_SCALE, capsenseCalibrateVals[0]);
+	LESENSE_ChannelThresSet(CAPLESENSE_SLIDER1_PIN, CAPLESENSE_ACMP_VDD_SCALE, capsenseCalibrateVals[1]);
+	LESENSE_ChannelThresSet(CAPLESENSE_SLIDER2_PIN, CAPLESENSE_ACMP_VDD_SCALE, capsenseCalibrateVals[2]);
+	LESENSE_ChannelThresSet(CAPLESENSE_SLIDER3_PIN, CAPLESENSE_ACMP_VDD_SCALE, capsenseCalibrateVals[3]);
+
+	/* Disable scan complete interrupt. */
+	LESENSE_IntDisable(LESENSE_IEN_SCANCOMPLETE);
+
+	NVIC_EnableIRQ(LESENSE_IRQn);
+
+	/* Start scanning LESENSE channels. */
+	LESENSE_ScanStart();
+
+	/* Run it only once. */
+	if (init)
 	{
-	    /* Stop LESENSE before configuration. */
-	    LESENSE_ScanStop();
+		/* Assuming that the pads are not touched at first, we can use the result as
+		 * the threshold value to calibrate the capacitive sensing in LESENSE. */
+		init = false;
 
-	    /* Wait until the currently active scan is finished. */
-	    while (LESENSE_STATUS_SCANACTIVE & LESENSE_StatusGet()) ;
+		/* Waiting for buffer to be full. */
+		while (!(LESENSE->STATUS & LESENSE_STATUS_BUFHALFFULL)) ;
 
-	    /* Clear result buffer. */
-	    LESENSE_ResultBufferClear();
+		/* Read out steady state values from LESENSE for calibration. */
+		for (i = 0U, j = 0U; j < LESENSE_CHANNELS; j++)
+		{
+			if (channeInUseForCap[j])
+			{
+				if (i < CAPLESENSE_NUMOF_SLIDERS)
+				{
+					capsenseCalibrateVals[i] = LESENSE_ScanResultDataBufferGet(j) - CAPLESENSE_SENSITIVITY_OFFS;
+				}
+				i++;
+			}
+		}
 
-	    /* Set scan frequency (in Hz). */
-	    (void) LESENSE_ScanFreqSet(0U, 5U);
-
-	    /* Set clock divisor for LF clock. */
-	    LESENSE_ClkDivSet(lesenseClkLF, lesenseClkDiv_1);
-
-	    /* Configure scan channels. */
-	    LESENSE_ChannelAllConfig(&initChsSleep);
-	    /* Configure alternate excitation channels. */
-	    LESENSE_AltExConfig(&initAltEx);
-
-	    /* Restore calibration values. */
-	    LESENSE_ChannelThresSet(CAPLESENSE_SLIDER0_PIN, CAPLESENSE_ACMP_VDD_SCALE, capsenseCalibrateVals[0]);
-	    LESENSE_ChannelThresSet(CAPLESENSE_SLIDER1_PIN, CAPLESENSE_ACMP_VDD_SCALE, capsenseCalibrateVals[1]);
-	    LESENSE_ChannelThresSet(CAPLESENSE_SLIDER2_PIN, CAPLESENSE_ACMP_VDD_SCALE, capsenseCalibrateVals[2]);
-	    LESENSE_ChannelThresSet(CAPLESENSE_SLIDER3_PIN, CAPLESENSE_ACMP_VDD_SCALE, capsenseCalibrateVals[3]);
-
-	    /* Disable scan complete interrupt. */
-	    LESENSE_IntDisable(LESENSE_IEN_SCANCOMPLETE);
+		/* Set calibration values. */
+		LESENSE_ChannelThresSet(CAPLESENSE_SLIDER0_PIN, CAPLESENSE_ACMP_VDD_SCALE, capsenseCalibrateVals[0]);
+		LESENSE_ChannelThresSet(CAPLESENSE_SLIDER1_PIN, CAPLESENSE_ACMP_VDD_SCALE, capsenseCalibrateVals[1]);
+		LESENSE_ChannelThresSet(CAPLESENSE_SLIDER2_PIN, CAPLESENSE_ACMP_VDD_SCALE, capsenseCalibrateVals[2]);
+		LESENSE_ChannelThresSet(CAPLESENSE_SLIDER3_PIN, CAPLESENSE_ACMP_VDD_SCALE, capsenseCalibrateVals[3]);
 	}
-	else
-	{
-	    /* Stop LESENSE before configuration. */
-	    LESENSE_ScanStop();
-
-	    /* Wait until the currently active scan is finished. */
-	    while (LESENSE_STATUS_SCANACTIVE & LESENSE_StatusGet()) ;
-
-	    /* Clean scan complete interrupt flag. */
-	    LESENSE_IntClear(LESENSE_IEN_SCANCOMPLETE);
-
-	    /* Clear result buffer. */
-	    LESENSE_ResultBufferClear();
-
-	    /* Set scan frequency (in Hz). */
-	    (void) LESENSE_ScanFreqSet(0U, 64U);
-
-	    /* Set clock divisor for LF clock. */
-	    LESENSE_ClkDivSet(lesenseClkLF, lesenseClkDiv_8);
-
-	    /* Configure scan channels. */
-	    LESENSE_ChannelAllConfig(&initChsSense);
-	    /* Configure alternate excitation channels. */
-	    LESENSE_AltExConfig(&initAltEx);
-
-	    /* Enable scan complete interrupt. */
-	    LESENSE_IntEnable(LESENSE_IEN_SCANCOMPLETE);
-	  }
-
-  NVIC_EnableIRQ(LESENSE_IRQn);
-
-  /* Start scanning LESENSE channels. */
-  LESENSE_ScanStart();
-
-  /* Run it only once. */
-  if (init)
-  {
-      /* Assuming that the pads are not touched at first, we can use the result as
-       * the threshold value to calibrate the capacitive sensing in LESENSE. */
-      init = false;
-
-      /* Waiting for buffer to be full. */
-      while (!(LESENSE->STATUS & LESENSE_STATUS_BUFHALFFULL)) ;
-
-      /* Read out steady state values from LESENSE for calibration. */
-      for (i = 0U, j = 0U; j < LESENSE_CHANNELS; j++)
-      {
-        if (channeInUseForCap[j])
-        {
-          if (i < CAPLESENSE_NUMOF_SLIDERS)
-          {
-            capsenseCalibrateVals[i] = LESENSE_ScanResultDataBufferGet(j) - CAPLESENSE_SENSITIVITY_OFFS;
-          }
-          i++;
-        }
-      }
-
-      /* Set calibration values. */
-      LESENSE_ChannelThresSet(CAPLESENSE_SLIDER0_PIN, CAPLESENSE_ACMP_VDD_SCALE, capsenseCalibrateVals[0]);
-      LESENSE_ChannelThresSet(CAPLESENSE_SLIDER1_PIN, CAPLESENSE_ACMP_VDD_SCALE, capsenseCalibrateVals[1]);
-      LESENSE_ChannelThresSet(CAPLESENSE_SLIDER2_PIN, CAPLESENSE_ACMP_VDD_SCALE, capsenseCalibrateVals[2]);
-      LESENSE_ChannelThresSet(CAPLESENSE_SLIDER3_PIN, CAPLESENSE_ACMP_VDD_SCALE, capsenseCalibrateVals[3]);
-  }
 }
 
 /**************************************************************************//**

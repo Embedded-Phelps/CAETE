@@ -13,6 +13,9 @@ void pir_Init(void);
 void GPIO_ODD_IRQHandler(void);
 void pir_RTCCallback(RTCDRV_TimerID_t id);
 
+/**************************************************************************
+ *	@brief 	PIR modules setup function
+ **************************************************************************/
 void pir_Init(void)
 {
 	RTCDRV_AllocateTimer( &rtc_PIR );

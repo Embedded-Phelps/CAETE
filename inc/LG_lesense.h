@@ -212,7 +212,8 @@
     }                                                                            \
 }
 
-void lesense_Setup(bool sleep);
+void lesense_Setup(void);
 void lesense_SetupCallbacks(void (*scanCb)(void), void (*chCb)(uint32_t flag));
 int32_t lesense_GetSliderPosition(void);
+
 #endif /* INC_LG_LESENSE_H_ */

@@ -24,12 +24,14 @@ void serial_BLE(void)
     str_length = strlen(ble_Transmit_Buff[tx_buffer_transmit_ptr]);
     str_ptr = ble_Transmit_Buff[tx_buffer_transmit_ptr];
     LEUART0->CTRL |= LEUART_CTRL_TXDMAWU;
-    //DMA_ENABLE();
     blockSleepMode(DMA_EM);
     DMA_ActivateBasic(LEUART0_TX_DMA_CHANNEL, true, false, (void *)&(LEUART0->TXDATA), (void *)str_ptr, str_length-1);
 
 }
 
+/**************************************************************************
+ *	@brief 	Packet wraping function
+ **************************************************************************/
 void serial_PreparePacket(packet_type_e packet_id, void *value, uint8_t *packet, uint8_t *len)
 {
 
@@ -85,22 +87,27 @@ void serial_SendPacket(packet_type_e packet_id, void * value)
     CORE_CriticalEnableIrq();
 }
 
+/**************************************************************************
+ *	@brief 	Serial callback function Tx
+ **************************************************************************/
 void serial_TXTransferDoneCB(uint8_t channel, bool primary, void *user)
 {
     CORE_CriticalDisableIrq();
     DMA->IFC = 1 << channel;
     LEUART0->CTRL &= ~LEUART_CTRL_TXDMAWU;
     unblockSleepMode(DMA_EM);
-    //DMA_DISABLE();
     strncpy(ble_Transmit_Buff[tx_buffer_transmit_ptr], "", DATA_MAX_LEN);
     data_transmitting_flag = false;
-    if(tx_buffer_transmit_ptr != tx_buffer_write_ptr)
+    if(tx_buffer_transmit_ptr != tx_buffer_write_ptr) //check for unsent item in the buffer
     {
     	serial_BLE();
     }
     CORE_CriticalEnableIrq();
 }
 
+/**************************************************************************
+ *	@brief 	Serial callback function Rx
+ **************************************************************************/
 void serial_RXTransferDoneCB(uint8_t channel, bool primary, void *user)
 {
 	CORE_CriticalDisableIrq();

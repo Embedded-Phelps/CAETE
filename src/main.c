@@ -2,12 +2,13 @@
 
 int main(void)
 {
-  /* Chip errata */
+  // Chip errata
   CHIP_Init();
+  // System initialization
   LG_systemInit();
-  /* Infinite loop */
-  while (1) {
-	  sleep();
 
+  while (1)
+  {
+	  sleep();
   }
 }

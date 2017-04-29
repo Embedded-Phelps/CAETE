@@ -14,7 +14,9 @@ DMA_CB_TypeDef dma_LEUART0_Rx_Callback;
 void leuart_Setup(void);
 static void leuart_DMASetup(void);
 
-
+/**************************************************************************
+ *	@brief  LEUART modules setup function
+ **************************************************************************/
 void leuart_Setup(void)
 {
 	CMU_ClockSelectSet(cmuClock_LFB, cmuSelect_LFXO);

@@ -14,7 +14,7 @@
 uint32_t letimer0_comp0 = COMP0;
 uint32_t letimer0_comp1 = COMP1;
 
-uint32_t s = COMP1;
+
 /* Name: calculate_LETIMER_LFXOPrescaler()
  * Routine to calculate the low frequency prescaler for the LETIMER
  * clocked with LFXO based on the desired period.

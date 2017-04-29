@@ -1,5 +1,6 @@
 /*
  * bme280.c
+ * This driver refer to the official API documents provided by Bosch. Inc
  *
  *  Created on: Apr 10, 2017
  *      Author: shuting
